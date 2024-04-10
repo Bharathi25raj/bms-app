@@ -1,12 +1,28 @@
 // import React from 'react';
-import { Form } from 'antd';
-import { Link } from 'react-router-dom';
+import { Form, message } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../Components/Button';
+import { LoginUser } from '../../apiCalls/users';
 
 
 const Login = () => {
 
-    
+    const navigate = useNavigate();
+
+    const onFinish = async (payload) => {
+        try{
+            const response = await LoginUser(payload);
+
+            if(response.success){
+                message.success(response.message);
+                navigate('/');
+            } else {
+                message.error(response.message);
+            }
+        } catch (err) {
+            message.error(err);
+        }
+    }
 
     return (
         <div className='flex justify-center items-center h-screen bg-primary'>
@@ -16,10 +32,10 @@ const Login = () => {
 
                 <hr />
 
-                <Form layout='vertical' className='mt-1'>
+                <Form layout='vertical' className='mt-1' onFinish={onFinish}>
                     <Form.Item
-                        label="Username"
-                        name="username"
+                        label="Email"
+                        name="email"
                         rules={[
                             {
                             required: true,
@@ -27,7 +43,7 @@ const Login = () => {
                             },
                         ]}
                     >
-                        <input type='text' />
+                        <input type='email' />
                     </Form.Item>
 
                     <Form.Item

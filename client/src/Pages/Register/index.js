@@ -1,10 +1,31 @@
-import { Form } from "antd";
-import { Link } from "react-router-dom";
+import { Form, message } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../Components/Button";
+import { RegisterUser } from "../../apiCalls/users";
 
 const Register = () => {
 
+  const navigate = useNavigate();
 
+  const onFinish = async (values) => {
+
+      try{
+
+        const response = await RegisterUser(values);
+
+        if(response.success){
+          message.success(response.message);
+          navigate('/login');
+          console.log(response.message);
+        } else {
+          message.error(response.message);
+          console.log(response.message);
+        }
+      } catch (err) {
+        message.error(err);
+      }
+
+  }
   
   return (
     <div className="flex justify-center items-center h-screen bg-primary">
@@ -13,7 +34,7 @@ const Register = () => {
           Welcome to Scaler Shows! Please Register
         </h1>
 
-        <Form layout="vertical" className="mt-1">
+        <Form layout="vertical" className="mt-1" onFinish={onFinish}>
           <Form.Item
             label="Name"
             name="name"
