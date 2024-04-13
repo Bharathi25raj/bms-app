@@ -10,12 +10,20 @@
     justify-content: center;
 }
 
+.justify-between{
+    justify-content: space-between;
+}
+
 .items-center{
     align-items: center;
 }
 
 .p-1{
     padding: 10px;
+}
+
+.p-2{
+    padding: 20px;
 }
 
 .p-3{

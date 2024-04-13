@@ -2,6 +2,7 @@ import { Form, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../Components/Button";
 import { RegisterUser } from "../../apiCalls/users";
+import { useEffect } from "react";
 
 const Register = () => {
 
@@ -27,6 +28,13 @@ const Register = () => {
 
   }
   
+
+  useEffect(() => {
+    if(localStorage.getItem('token')){
+      navigate('/');
+    }
+  }, [])
+
   return (
     <div className="flex justify-center items-center h-screen bg-primary">
       <div className="card w-400 p-3">
