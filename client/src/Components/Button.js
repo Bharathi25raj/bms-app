@@ -5,13 +5,13 @@ function Button({ title, onClick, variant, disabled, fullWidth, type }) {
   let className = "bg-primary p-1 text-white";
 
   if (fullWidth) {
-    className += "w-full";
+    className += " w-full";
   }
 
   if (variant === "outlined") {
-    className.replace(
+    className = className.replace(
       "bg-primary",
-      "border border-primary bg-white text-primary"
+      "border border-primary text-primary bg-white"
     );
   }
 
