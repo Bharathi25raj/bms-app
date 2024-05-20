@@ -103,7 +103,7 @@ function MoviesList() {
       render: (text, record) => {
         return (
           <div className="flex gap-1">
-            {console.log(text)}
+            {/* {console.log(text)} */}
             <i
               class="ri-pencil-line"
               onClick={() => {

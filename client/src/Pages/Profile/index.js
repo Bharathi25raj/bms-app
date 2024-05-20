@@ -1,5 +1,6 @@
 import { Tabs } from "antd";
 import PageTitle from "../../Components/PageTitle";
+import TheatreList from "./TheatreList";
 
 export default function Profile() {
     return (
@@ -8,7 +9,9 @@ export default function Profile() {
 
             <Tabs defaultActiveKey="1">
                 <Tabs.TabPane tab='Bookings' key='1'>Bookings</Tabs.TabPane>
-                <Tabs.TabPane tab='Apply for Theatre' key='2'>Theatre List</Tabs.TabPane>
+                <Tabs.TabPane tab='Apply for Theatre' key='2'>
+                    <TheatreList />
+                </Tabs.TabPane>
             </Tabs>
         </div>
     )
